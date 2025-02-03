@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elyan Wauters Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            animation: fadeIn 1.5s ease-in-out;
+            font-family: Arial, sans-serif;
+            background-color: #111;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            color: #00ffcc;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        h1 {
+            animation: slideIn 1s ease-in-out;
+            color: #00ffcc;
+        }
+        @keyframes slideIn {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        section {
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 800px;
+            background: #222;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 255, 204, 0.3);
+            color: #fff;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #000;
+            color: #00ffcc;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            font-weight: bold;
+            color: #00ffcc;
+        }
+    </style>
+</head>
+<body>
+    <audio id="bg-music" loop>
+        <source src="cool.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        document.addEventListener("click", function() {
+            let audio = document.getElementById("bg-music");
+            if (audio.paused) {
+                audio.play().catch(error => console.log("Playback prevented: ", error));
+            }
+        }, { once: true });
+
+        let playlist = ["cool.mp3", "cool2.mp3", "cool3.mp3", "cool4.mp3", "cool5.mp3"];
+        let currentTrack = 0;
+        let audioElement = document.getElementById("bg-music");
+
+        audioElement.addEventListener("ended", function() {
+            currentTrack = (currentTrack + 1) % playlist.length;
+            audioElement.src = playlist[currentTrack];
+            audioElement.load();
+            audioElement.play().catch(error => console.log("Playback prevented: ", error));
+        });
+    </script>
+    <header>
+        <h1>Elyan Wauters</h1>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hi, I'm Elyan Wauters, a skilled developer with expertise in web development, software engineering, and game development. I have experience in multiple programming languages such as HTML, CSS, JavaScript, Python, C#, and C++. I am passionate about creating innovative solutions and always strive to improve my skills.</p>
+    </section>
+    <section id="projects">
+        <h2>Projects</h2>
+        <div class="project">
+            <h3>Web Development</h3>
+            <p>Designed and developed various responsive and user-friendly websites using modern web technologies.</p>
+        </div>
+        <div class="project">
+            <h3>Software Engineering</h3>
+            <p>Created efficient and scalable applications, ensuring optimal performance and usability.</p>
+        </div>
+        <div class="project">
+            <h3>Game Development</h3>
+            <p>Developed interactive and engaging games using advanced programming techniques and game engines.</p>
+        </div>
+    </section>
+    <section id="contact" style="background: #222; padding: 20px; border-radius: 10px;">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:wauterselyan@gmail.com" style="color: #00ffcc;">wauterselyan@gmail.com</a></p>
+    </section>
+    <footer>
+        <p>&copy; 2025 Elyan Wauters</p>
+    </footer>
+</body>
+</html>
